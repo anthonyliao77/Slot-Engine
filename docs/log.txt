@@ -1,0 +1,11 @@
+# Log journal to document every session
+
+Nov 27 2025
+Initial commit. Added necessary files to create window using OpenGL. 
+Next session I should add necessary files and set up a plan for project.
+
+Dec 4 2025
+Added sub/folders and clear instructions on how the project should proceed.
+Started writing the math models using python.
+The mathematical models are written in python using their math libs.
+Next session I should conitnue with the mathematical models.
