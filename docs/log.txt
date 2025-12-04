@@ -2,10 +2,13 @@
 
 Nov 27 2025
 Initial commit. Added necessary files to create window using OpenGL. 
-Next session I should add necessary files and set up a plan for project.
+# Next session I should add necessary files and set up a plan for project.
 
 Dec 4 2025
 Added sub/folders and clear instructions on how the project should proceed.
-Started writing the math models using python.
+Starting with data objects, a reel as an example, simulate a reel
 The mathematical models are written in python using their math libs.
-Next session I should conitnue with the mathematical models.
+# Add serialization/parsing hooks: static ReelStrip fromConfig(const ReelStripConfig&) 
+# or a free helper that reads assets/reels/*.json into the vector.
+# Optional weighting support: if you plan on virtual stops, add a parallel weight array 
+# (std::vector<double> weights_) and methods to normalise/sample by weight.
