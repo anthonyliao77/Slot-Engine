@@ -4,33 +4,73 @@
 #include <vector>
 #include <string>
 #include <stdexcept>
+#include <random>
+#include <array>
 
 enum class Symbol {
-    Cherry,
-    Lemon,
-    Orange,
-    Plum,
-    Watermelon,
-    Grape,
-    Apple,
-    Bell,
-    Bar,
-    DoubleBar,
-    TripleBar,
-    Horseshoe,
-    FourLeafClover,
-    LuckySeven,
-    Diamond,
-    Ruby,
-    Sapphire,
-    Emerald,
-    GoldCoin,
-    SilverCoin,
-    BronzeCoin,
-    Star,
-    Crown,
-    Wild,
-    Scatter
+    Cherry, // 1kr
+    Lemon, // 1kr
+    Orange, // 1kr 
+    Plum, // 1.5kr
+    Watermelon, // 2kr
+    Grape, // 2kr
+    Apple, // 2kr
+    Bell, // 3kr
+    Bar, // 3kr
+    DoubleBar, // 4kr
+    TripleBar, // 5 kr
+    Horseshoe, // 4 kr
+    FourLeafClover, // 5kr
+    LuckySeven, // 20
+    Diamond, // 15
+    Ruby, // 8
+    Sapphire, // 10
+    Emerald, // 12
+    GoldCoin, // 5
+    SilverCoin, // 3
+    BronzeCoin, // 2
+    Star, // 6
+    Crown, // 7
+    Wild, // 25
+    Scatter // 10
+};
+
+class Reel {
+    const ReelStrip& strip;
+    std::size_t stopIndex{0};
+
+public:
+
+    // Saving reelstrip for it to be read  
+    Reel(const ReelStrip& strip, std::size_t start = 0)
+    : strip(strip), stopIndex(start % strip.size()) {
+        if (strip.empty()) {
+            throw std::runtime_error("Reel is empty, require legal reel");
+        }
+    }
+    // randomly choosing reelstrip
+    std::size_t spin(std::mt19937& rng) {
+        std::uniform_int_distribution<std::size_t> dist(1, strip.size());
+        const std::size_t advance = dist(rng);
+
+        stopIndex = (stopIndex + advance) % strip.size();
+        return stopIndex;
+
+    }
+    // Get all visible symbols 
+    Symbol current() const {return strip.at(stopIndex);}
+    Symbol above() const {return strip.prev(stopIndex);}
+    Symbol below() const {return strip.next(stopIndex);}
+
+    // return all the chosen strips
+    std::array<Symbol, 3> visibleSymbols() const {
+        return { above(), current(), below() };
+    }
+
+    void setStop(std::size_t index) {
+        stopIndex = index % strip.size();
+    }
+
 };
 
 class ReelStrip {

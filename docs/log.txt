@@ -12,3 +12,19 @@ The mathematical models are written in python using their math libs.
 # or a free helper that reads assets/reels/*.json into the vector.
 # Optional weighting support: if you plan on virtual stops, add a parallel weight array 
 # (std::vector<double> weights_) and methods to normalise/sample by weight.
+
+Dec 5 2025
+Done with reelstrip structs, helper methods etc.
+Should do some basic tests with probability models
+
+Dec 7 2025
+Started with probability model using Monte Carlo simulation
+Still need to have it read the values from cpp to python
+
+Jan 19 2026
+Starting with indexing, wrapping and spin state of reels
+Added a Reel wrapper around ReelStrip that keeps the strip immutable while tracking a stop index.
+Implemented spin using a shared std::mt19937, plus accessors for current/above/below symbols and a fixed trio via visibleSymbols.
+Exposed setStop for deterministic tests, clarifying how future Monte Carlo simulations will reuse the same RNG flow
+Next is to build a minimal spin evaluator that owns several Reels, runs one spin with a fixed RNG seed, 
+and totals payouts for a sample payline to unit-test full spin flow.
