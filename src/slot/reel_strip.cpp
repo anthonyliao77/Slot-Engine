@@ -100,6 +100,22 @@ ReelStrip ReelStrip::fromConfig(const ReelStripConfig& config) {
     return rs;
 }
 
+// Creates a fair and weighted reel strip
+std::vector<Symbol> createReelStrip(const std::map<Symbol, int>& strip) {
+    std::vector<Symbol> fullStrip;
+
+    // every symbol has weighted connected to their rarity
+    for (auto const& [symbol, weight] : strip) {
+        for (int i = 0; i < weight; i++) {
+            fullStrip.push_back(symbol);
+        }
+    }
+
+    std::shuffle(fullStrip.begin(), fullStrip.end(), std::mt19937{std::random_device{}()});
+
+    return fullStrip;
+}
+
 /**
  * @brief Map: String name -> Enum value.
  */

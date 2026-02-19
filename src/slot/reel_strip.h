@@ -5,6 +5,8 @@
 #include <string>
 #include <random>
 #include <array>
+#include <map>
+#include <algorithm>
 
 /**
  * @brief Enum representing all possible symbols in the slot machine.
@@ -73,6 +75,8 @@ public:
     struct ReelStripConfig {
         std::vector<std::string> reelConfig;
     };
+    /** @brief Creates a fair Reelstrip based on the symbol weight */
+    std::vector<Symbol> createReelStrip(const std::map<Symbol, int>& strip);
 
     // Metadata
     std::size_t size() const { return symbols.size(); }
