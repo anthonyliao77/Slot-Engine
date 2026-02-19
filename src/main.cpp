@@ -71,27 +71,60 @@
 // }
 
 int main() {
-    ReelStrip strip = ReelStrip::fromConfig({{"Lemon", "Lemon", "Lemon"}});
+    // 1. Symbols
+
+    std::map <Symbol, int> symbolWeight = {
+        {Symbol::Lemon, 100},
+        {Symbol::Cherry, 90},
+        {Symbol::Orange, 80},
+
+        {Symbol::Bell, 25},
+        {Symbol::Bar, 25},
+
+        {Symbol::LuckySeven, 10},
+        {Symbol::Diamond, 10},
+
+        {Symbol::Wild, 1},
+        {Symbol::Scatter, 1},
+    };
+    
+    // Create weighted reelstrip
+    ReelStrip strip;
+    std::vector<Symbol> symbolVector = strip.createReelStrip(symbolWeight);
+
+    // Symbol to ReelStrip
+    strip.setSymbols(symbolVector);
 
     // 2. Create a reel
     Reel firstStrip(strip);
     Reel secondStrip(strip);
     Reel thirdStrip(strip);
 
-    // 3. FIX THE SEED (This is your "Unit Test" mode)
-    // no rng implemented yet
+    // 3. RNG and spin
+    std::mt19937 engine(std::random_device{}());
+    
+    firstStrip.spin(engine);
+    secondStrip.spin(engine);
+    thirdStrip.spin(engine);
 
-    // 4. Spin
+    // 4. Collect spun symbols
     std::vector<std::array<Symbol, 3>> grid;
     grid.push_back(firstStrip.visibleSymbols());
     grid.push_back(secondStrip.visibleSymbols());
     grid.push_back(thirdStrip.visibleSymbols());
     
-    // 5. Evaluate
+    // 5. Payout logic
     SpinEvaluator evaluator;
     int win = evaluator.evaluate(grid);
     
-    // 6. Print out win
+    // 6. Print debugging
+    
+    for (int row = 0; row < 3; row++) {
+        for (int col = 0; col < grid.size(); col++) {
+            std::cout << "[" << ReelStrip::toString(grid[col][row]) << "]\t";
+        }
+    std::cout << std::endl; 
+}
     std::cout << "Total payout based on the spin" << std:: endl << win << std::endl;
 
     return 0;
