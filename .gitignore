@@ -3,3 +3,4 @@
 *.exe
 build/
 *.venv
+slot_test
