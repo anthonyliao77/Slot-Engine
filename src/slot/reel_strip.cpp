@@ -95,13 +95,13 @@ ReelStrip ReelStrip::fromConfig(const ReelStripConfig& config) {
         tmp.push_back(toSymbol(name));
     }
     
-    ReelStrip rs;
-    rs.setSymbols(std::move(tmp));
-    return rs;
+    ReelStrip reelStrip;
+    reelStrip.setSymbols(std::move(tmp));
+    return reelStrip;
 }
 
 // Creates a fair and weighted reel strip
-std::vector<Symbol> createReelStrip(const std::map<Symbol, int>& strip) {
+std::vector<Symbol> ReelStrip::createReelStrip(const std::map<Symbol, int>& strip) {
     std::vector<Symbol> fullStrip;
 
     // every symbol has weighted connected to their rarity
