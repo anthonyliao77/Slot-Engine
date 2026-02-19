@@ -1,30 +1,50 @@
-# Log journal to document every session
+**Log journal for documentation of slot machine game** 
 
-Nov 27 2025
+**Nov 27 2025**
+Today:
 Initial commit. Added necessary files to create window using OpenGL. 
-# Next session I should add necessary files and set up a plan for project.
 
-Dec 4 2025
+TODO:
+session I should add necessary files and set up a plan for project.
+
+**Dec 4 2025**
+Today:
 Added sub/folders and clear instructions on how the project should proceed.
 Starting with data objects, a reel as an example, simulate a reel
 The mathematical models are written in python using their math libs.
-# Add serialization/parsing hooks: static ReelStrip fromConfig(const ReelStripConfig&) 
-# or a free helper that reads assets/reels/*.json into the vector.
-# Optional weighting support: if you plan on virtual stops, add a parallel weight array 
-# (std::vector<double> weights_) and methods to normalise/sample by weight.
 
-Dec 5 2025
+TODO:
+Add serialization/parsing hooks: static ReelStrip fromConfig(const ReelStripConfig&)  or a free helper that reads assets/reels/*.json into the vector.
+Optional weighting support: if you plan on virtual stops, add a parallel weight array (std::vector<double> weights_) and methods to normalise/sample by weight.
+
+**Dec 5 2025**
+Today:
 Done with reelstrip structs, helper methods etc.
 Should do some basic tests with probability models
 
-Dec 7 2025
+**Dec 7 2025**
+Today:
 Started with probability model using Monte Carlo simulation
 Still need to have it read the values from cpp to python
 
-Jan 19 2026
+**Jan 19 2026**
+Today:
 Starting with indexing, wrapping and spin state of reels
 Added a Reel wrapper around ReelStrip that keeps the strip immutable while tracking a stop index.
 Implemented spin using a shared std::mt19937, plus accessors for current/above/below symbols and a fixed trio via visibleSymbols.
 Exposed setStop for deterministic tests, clarifying how future Monte Carlo simulations will reuse the same RNG flow
-Next is to build a minimal spin evaluator that owns several Reels, runs one spin with a fixed RNG seed, 
+
+TODO:
+build a minimal spin evaluator that owns several Reels, runs one spin with a fixed RNG seed, 
 and totals payouts for a sample payline to unit-test full spin flow.
+
+**February 19th 2026**
+Today:
+- Refactor: comments, improved readability
+- Refactor: `reel_strip.h` now only implements class, fields and method structure. `reel_strip.cpp` implements the functions of the header.
+- Added: `spin_evaluation.h` and `spin_evaluation.cpp` to handle the payout logic. 
+- Testing: Simulated random spins with weighted probability to CLI
+
+TODO:
+- Simulate the spins on a higher scale, using matplotlib python, to identift current RTP and improve
+- Graphics for the slot machine
