@@ -10,27 +10,9 @@
 enum class Symbol {
     Cherry, // 1kr
     Lemon, // 1kr
-    Orange, // 1kr 
-    Plum, // 1.5kr
-    Watermelon, // 2kr
-    Grape, // 2kr
-    Apple, // 2kr
-    Bell, // 3kr
     Bar, // 3kr
-    DoubleBar, // 4kr
-    TripleBar, // 5 kr
-    Horseshoe, // 4 kr
-    FourLeafClover, // 5kr
     LuckySeven, // 20
     Diamond, // 15
-    Ruby, // 8
-    Sapphire, // 10
-    Emerald, // 12
-    GoldCoin, // 5
-    SilverCoin, // 3
-    BronzeCoin, // 2
-    Star, // 6
-    Crown, // 7
     Wild, // 25
     Scatter // 10
 };
@@ -139,32 +121,14 @@ public:
 
         return result;
     }
-
+    
     // converting string to symbol
     static Symbol toSymbol(const std::string& name) {
         if (name == "Cherry") return Symbol::Cherry;
         if (name == "Lemon") return Symbol::Lemon;
-        if (name == "Orange") return Symbol::Orange;
-        if (name == "Plum") return Symbol::Plum;
-        if (name == "Watermelon") return Symbol::Watermelon;
-        if (name == "Grape") return Symbol::Grape;
-        if (name == "Apple") return Symbol::Apple;
-        if (name == "Bell") return Symbol::Bell;
         if (name == "Bar") return Symbol::Bar;
-        if (name == "DoubleBar") return Symbol::DoubleBar;
-        if (name == "TripleBar") return Symbol::TripleBar;
-        if (name == "Horseshoe") return Symbol::Horseshoe;
-        if (name == "FourLeafClover") return Symbol::FourLeafClover;
         if (name == "LuckySeven") return Symbol::LuckySeven;
         if (name == "Diamond") return Symbol::Diamond;
-        if (name == "Ruby") return Symbol::Ruby;
-        if (name == "Sapphire") return Symbol::Sapphire;
-        if (name == "Emerald") return Symbol::Emerald;
-        if (name == "GoldCoin") return Symbol::GoldCoin;
-        if (name == "SilverCoin") return Symbol::SilverCoin;
-        if (name == "BronzeCoin") return Symbol::BronzeCoin;
-        if (name == "Star") return Symbol::Star;
-        if (name == "Crown") return Symbol::Crown;
         if (name == "Wild") return Symbol::Wild;
         if (name == "Scatter") return Symbol::Scatter;
         throw std::runtime_error("Unknown symbol name: " + name);
@@ -177,27 +141,9 @@ public:
         switch (symbol) {
         case Symbol::Cherry: return "Cherry";
         case Symbol::Lemon: return "Lemon";
-        case Symbol::Orange: return "Orange";
-        case Symbol::Plum: return "Plum";
-        case Symbol::Watermelon: return "Watermelon";
-        case Symbol::Grape: return "Grape";
-        case Symbol::Apple: return "Apple";
-        case Symbol::Bell: return "Bell";
         case Symbol::Bar: return "Bar";
-        case Symbol::DoubleBar: return "DoubleBar";
-        case Symbol::TripleBar: return "TripleBar";
-        case Symbol::Horseshoe: return "Horseshoe";
-        case Symbol::FourLeafClover: return "FourLeafClover";
         case Symbol::LuckySeven: return "LuckySeven";
         case Symbol::Diamond: return "Diamond";
-        case Symbol::Ruby: return "Ruby";
-        case Symbol::Sapphire: return "Sapphire";
-        case Symbol::Emerald: return "Emerald";
-        case Symbol::GoldCoin: return "GoldCoin";
-        case Symbol::SilverCoin: return "SilverCoin";
-        case Symbol::BronzeCoin: return "BronzeCoin";
-        case Symbol::Star: return "Star";
-        case Symbol::Crown: return "Crown";
         case Symbol::Wild: return "Wild";
         case Symbol::Scatter: return "Scatter";
         }
