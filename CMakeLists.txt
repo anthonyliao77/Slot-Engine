@@ -5,6 +5,29 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
+# Add this — define the slot library from your actual .cpp files
+add_library(slots
+    src/slot/reel_strip.cpp
+    src/slot/spin_evaluation.cpp
+    # add any other .cpp files here
+)
+
+target_include_directories(slot PUBLIC
+    ${PROJECT_SOURCE_DIR}/src
+)
+
+find_package(pybind11 REQUIRED)
+
+pybind11_add_module(slot_engine
+    tests/pybind11.cpp
+)
+
+target_include_directories(slot_engine PRIVATE
+    ${PROJECT_SOURCE_DIR}/src
+)
+
+target_link_libraries(slot_engine PRIVATE slots)
+
 # 1. Find OpenGL (Standard CMake way)
 find_package(OpenGL REQUIRED)
 
