@@ -5,26 +5,10 @@ symbols = [
 	"Cherry",
 	"Lemon",
 	"Orange",
-	"Plum",
-	"Watermelon",
-	"Grape",
-	"Apple",
 	"Bell",
 	"Bar",
-	"DoubleBar",
-	"TripleBar",
-	"Horseshoe",
-	"FourLeafClover",
 	"LuckySeven",
 	"Diamond",
-	"Ruby",
-	"Sapphire",
-	"Emerald",
-	"GoldCoin",
-	"SilverCoin",
-	"BronzeCoin",
-	"Star",
-	"Crown",
 	"Wild",
 	"Scatter",
 ]
@@ -35,26 +19,10 @@ probability = np.array(
 		0.1157,  # Cherry
 		0.1157,  # Lemon
 		0.1157,  # Orange
-		0.0771,  # Plum
-		0.0579,  # Watermelon
-		0.0579,  # Grape
-		0.0579,  # Apple
 		0.0386,  # Bell
 		0.0386,  # Bar
-		0.0289,  # DoubleBar
-		0.0231,  # TripleBar
-		0.0289,  # Horseshoe
-		0.0231,  # FourLeafClover
 		0.0058,  # LuckySeven
 		0.0077,  # Diamond
-		0.0145,  # Ruby
-		0.0116,  # Sapphire
-		0.0096,  # Emerald
-		0.0231,  # GoldCoin
-		0.0386,  # SilverCoin
-		0.0579,  # BronzeCoin
-		0.0193,  # Star
-		0.0165,  # Crown
 		0.0046,  # Wild
 		0.0116,  # Scatter
 	],
